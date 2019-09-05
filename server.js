@@ -1,4 +1,5 @@
 var express = require('express'),
+    cors = require('cors'),
     app = express(),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
@@ -29,6 +30,7 @@ const options = {
 mongoose.connect('mongodb://localhost/tododb', options, mongoError => console.error(mongoError));
 mongoose.set('debug', true);
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
